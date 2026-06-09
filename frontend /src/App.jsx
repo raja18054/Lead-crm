@@ -105,7 +105,7 @@ export default function App() {
           <h1 style={{ margin: 0, color: "#e2e8f0", fontSize: "20px", fontWeight: "800" }}>
             <span style={{ color: "#818cf8" }}>●</span> Lead CRM
           </h1>
-          <p style={{ margin: "2px 0 0", color: "#4b5563", fontSize: "12px" }}>InstaWeb Labs Assignment</p>
+          <p style={{ margin: "2px 0 0", color: "#4b5563", fontSize: "12px" }}>Full Stack MERN Project</p>
         </div>
         <button onClick={() => { setEditLead(null); setShowForm(true); }}
           style={{ padding: "10px 20px", background: "#4f46e5", border: "none", borderRadius: "8px", color: "#fff", fontSize: "14px", fontWeight: "700", cursor: "pointer" }}>
