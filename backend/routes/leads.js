@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getLeads,
-  getLead,
-  createLead,
-  updateLead,
-  deleteLead,
+  getTickets,
+  getTicket,
+  createTicket,
+  updateTicket,
+  deleteTicket,
   getStats,
-} = require("../controllers/leadController");
+} = require("../controllers/ticketController");
 
 router.get("/stats", getStats);
-router.get("/", getLeads);
-router.get("/:id", getLead);
-router.post("/", createLead);
-router.put("/:id", updateLead);
-router.delete("/:id", deleteLead);
+router.get("/", getTickets);
+router.get("/:ticket_id", getTicket);
+router.post("/", createTicket);
+router.put("/:ticket_id", updateTicket);
+router.delete("/:ticket_id", deleteTicket);
 
-module.exports = router;
+module.exports = router;;
