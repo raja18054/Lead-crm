@@ -1,53 +1,42 @@
 const mongoose = require("mongoose");
 
-const ticketSchema = new mongoose.Schema(
+const leadSchema = new mongoose.Schema(
   {
-    ticket_id: {
+    name: {
       type: String,
-      unique: true,
-      // auto-generated in pre-save hook below, not required from client
-    },
-    customer_name: {
-      type: String,
-      required: [true, "Customer name is required"],
+      required: [true, "Name is required"],
       trim: true,
     },
-    customer_email: {
+    email: {
       type: String,
-      required: [true, "Customer email is required"],
+      required: [true, "Email is required"],
+      unique: true,
       lowercase: true,
       trim: true,
     },
-    subject: {
+    phone: {
       type: String,
-      required: [true, "Subject is required"],
+      required: [true, "Phone number is required"],
       trim: true,
     },
-    description: {
+    company: {
       type: String,
-      required: [true, "Description is required"],
+      required: [true, "Company name is required"],
       trim: true,
     },
     status: {
       type: String,
-      enum: ["Open", "In Progress", "Closed"],
-      default: "Open",
+      enum: ["New", "Contacted", "Qualified", "Converted", "Lost"],
+      default: "New",
     },
     notes: {
-      type: [String],
-      default: [],
+      type: String,
+      default: "",
     },
   },
-  { timestamps: true } // gives you createdAt, updatedAt automatically
+  { timestamps: true }
 );
 
-// Auto-generate ticket_id before saving (e.g. TKT-001, TKT-002...)
-ticketSchema.pre("save", async function (next) {
-  if (!this.ticket_id) {
-    const count = await mongoose.model("Ticket").countDocuments();
-    this.ticket_id = `TKT-${String(count + 1).padStart(3, "0")}`;
-  }
-  next();
-});
+module.exports = mongoose.model("Lead", leadSchema);
 
-module.exports = mongoose.model("Ticket", ticketSchema);
+
